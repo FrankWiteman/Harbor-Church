@@ -1,0 +1,8 @@
+{
+  "name": "Harbor Church Digital Campus",
+  "description": "A modern, nautical-themed application for Harbor Church members to connect, give, listen to messages, and meet the team.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ]
+}
