@@ -1,6 +1,6 @@
 
 import React, { useEffect, useState } from 'react';
-import { ArrowRight, Play, Compass, Ship, Anchor, Waves, Clock, MapPin, Sparkles, Megaphone, Calendar, Users, Smartphone, MessageCircle, HeartHandshake } from 'lucide-react';
+import { ArrowRight, Play, Compass, Ship, Anchor, Waves, Clock, MapPin, Sparkles, Megaphone, Calendar, Users, Smartphone, MessageCircle, HeartHandshake, Globe, Quote } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { generatePrayerPrompt } from '../services/geminiService';
 
@@ -57,16 +57,17 @@ const Home: React.FC = () => {
           </div>
         </div>
 
-        <div className="absolute bottom-6 md:bottom-12 left-0 right-0 z-20 animate-bounce text-white/40 flex flex-col items-center gap-2 px-4 text-center">
-          <span className="text-[9px] uppercase tracking-[0.6em] font-black opacity-60">Discover More</span>
-          <div className="w-px h-10 md:h-16 bg-gradient-to-b from-white/40 to-transparent mx-auto"></div>
+        {/* Refined Discover More - Better mobile spacing and minimalist line */}
+        <div className="absolute bottom-10 left-0 right-0 z-20 flex flex-col items-center gap-3 pointer-events-none">
+          <span className="text-[10px] md:text-xs uppercase tracking-[0.4em] font-bold text-white/60 animate-pulse">Explore</span>
+          <div className="w-px h-8 md:h-12 bg-gradient-to-b from-white/60 to-transparent animate-bounce"></div>
         </div>
       </section>
 
       {/* Floating Info Card */}
       <div className="relative z-30 max-w-6xl mx-auto -mt-16 px-4">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-0 rounded-[3rem] overflow-hidden shadow-2xl bg-white border border-slate-100">
-          <div className="p-8 md:p-10 flex items-start gap-6 border-b md:border-b-0 md:border-r border-slate-100">
+          <div className="p-8 md:p-10 flex items-start gap-6 border-b md:border-b-0 md:border-r border-slate-100 hover:bg-slate-50 transition-colors">
             <div className="bg-sky-100 p-4 rounded-2xl text-sky-600">
               <Clock size={28} />
             </div>
@@ -77,7 +78,7 @@ const Home: React.FC = () => {
             </div>
           </div>
           
-          <div className="p-8 md:p-10 flex items-start gap-6 border-b md:border-b-0 md:border-r border-slate-100">
+          <div className="p-8 md:p-10 flex items-start gap-6 border-b md:border-b-0 md:border-r border-slate-100 hover:bg-slate-50 transition-colors">
             <div className="bg-blue-100 p-4 rounded-2xl text-blue-600">
               <MapPin size={28} />
             </div>
@@ -88,7 +89,7 @@ const Home: React.FC = () => {
             </div>
           </div>
           
-          <div className="p-8 md:p-10 flex items-start gap-6">
+          <div className="p-8 md:p-10 flex items-start gap-6 hover:bg-slate-50 transition-colors">
             <div className="bg-amber-100 p-4 rounded-2xl text-amber-600">
               <Compass size={28} />
             </div>
@@ -101,8 +102,103 @@ const Home: React.FC = () => {
         </div>
       </div>
 
-      {/* Philosophy Section */}
+      {/* The Great Commission Section - Matt 28:19-20 */}
+      <section className="py-24 px-4 bg-slate-50 relative overflow-hidden">
+        <div className="absolute top-0 right-0 opacity-5 -mr-20 -mt-20">
+          <Globe size={400} />
+        </div>
+        <div className="max-w-5xl mx-auto relative z-10">
+          <div className="flex flex-col items-center text-center">
+            <div className="w-12 h-12 bg-blue-900 text-white rounded-full flex items-center justify-center mb-10 shadow-xl">
+              <Quote size={20} fill="white" />
+            </div>
+            <h2 className="text-3xl md:text-5xl font-serif text-blue-950 italic leading-snug mb-8 px-4">
+              "Therefore go and make disciples of all nations, baptizing them in the name of the Father and of the Son and of the Holy Spirit... And surely I am with you always, to the very end of the age."
+            </h2>
+            <div className="flex items-center gap-4">
+              <div className="h-px w-12 bg-sky-500"></div>
+              <span className="text-sky-600 font-black tracking-[0.3em] uppercase text-sm">Matthew 28:19-20</span>
+              <div className="h-px w-12 bg-sky-500"></div>
+            </div>
+            <p className="mt-12 text-slate-500 max-w-xl text-lg font-light">
+              This is our mandate. We are not just a building; we are a people sent on a mission to bring the peace of the Harbor to the ends of the earth.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* NEW: Announcements Section */}
       <section className="py-32 px-4 bg-white">
+        <div className="max-w-7xl mx-auto">
+          <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+            <div className="text-left">
+              <div className="flex items-center gap-2 text-sky-500 mb-4">
+                <Megaphone size={20} className="animate-bounce" />
+                <span className="text-sm font-black tracking-[0.3em] uppercase">What's New</span>
+              </div>
+              <h2 className="text-4xl md:text-6xl font-bold text-blue-950 font-serif">News from the Port</h2>
+            </div>
+            <Link to="/connect" className="group text-blue-900 font-bold flex items-center gap-2 hover:gap-4 transition-all pb-2 border-b-2 border-transparent hover:border-sky-500">
+              All Events <ArrowRight size={20} />
+            </Link>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {/* Announcement Card 1 */}
+            <div className="group bg-blue-50 rounded-[2.5rem] p-10 border border-blue-100 hover:bg-blue-900 transition-all duration-500 hover:shadow-2xl flex flex-col">
+              <div className="bg-white w-14 h-14 rounded-2xl flex items-center justify-center text-blue-900 mb-8 shadow-sm group-hover:scale-110 transition-transform">
+                <Calendar size={28} />
+              </div>
+              <h3 className="text-2xl font-bold text-blue-950 mb-4 group-hover:text-white transition-colors">Vision Night 2025</h3>
+              <p className="text-slate-600 group-hover:text-blue-100 leading-relaxed mb-8 flex-grow">
+                Join us for an evening of worship and a special reveal of where Harbor Church is heading in the new year. Dinner provided.
+              </p>
+              <div className="pt-6 border-t border-blue-200 group-hover:border-blue-700 flex justify-between items-center">
+                <span className="text-xs font-black text-sky-600 uppercase tracking-widest group-hover:text-sky-300">Dec 12 • 6 PM</span>
+                <span className="text-blue-900 font-bold text-sm group-hover:text-white">RSVP &rarr;</span>
+              </div>
+            </div>
+
+            {/* Announcement Card 2 (Prominent) */}
+            <div className="group bg-blue-950 rounded-[2.5rem] p-10 border border-blue-900 relative overflow-hidden shadow-xl hover:scale-105 transition-all duration-500">
+              <div className="absolute top-0 right-0 p-8 opacity-10">
+                <Waves size={120} className="text-sky-400 rotate-12" />
+              </div>
+              <div className="relative z-10">
+                <div className="bg-sky-500 w-14 h-14 rounded-2xl flex items-center justify-center text-white mb-8 shadow-lg">
+                  <HeartHandshake size={28} />
+                </div>
+                <h3 className="text-2xl font-bold text-white mb-4">Baptism Sunday</h3>
+                <p className="text-blue-100 leading-relaxed mb-8">
+                  Publicly declaring your faith is a powerful milestone. If you're ready to take the plunge, sign up for our upcoming celebration.
+                </p>
+                <div className="pt-6 border-t border-blue-800 flex justify-between items-center">
+                  <span className="text-xs font-black text-sky-400 uppercase tracking-widest">Next Sunday</span>
+                  <button className="bg-white text-blue-950 px-4 py-2 rounded-full font-bold text-xs hover:bg-sky-50 transition-colors">Register Now</button>
+                </div>
+              </div>
+            </div>
+
+            {/* Announcement Card 3 */}
+            <div className="group bg-slate-50 rounded-[2.5rem] p-10 border border-slate-200 hover:bg-sky-500 transition-all duration-500 hover:shadow-2xl flex flex-col">
+              <div className="bg-white w-14 h-14 rounded-2xl flex items-center justify-center text-sky-600 mb-8 shadow-sm group-hover:scale-110 transition-transform">
+                <Smartphone size={28} />
+              </div>
+              <h3 className="text-2xl font-bold text-blue-950 mb-4 group-hover:text-white transition-colors">Harbor Mobile App</h3>
+              <p className="text-slate-600 group-hover:text-sky-50 leading-relaxed mb-8 flex-grow">
+                Stay connected 24/7. Access sermons, giving, and community chats directly from your phone.
+              </p>
+              <div className="pt-6 border-t border-slate-200 group-hover:border-sky-400 flex justify-between items-center">
+                <span className="text-xs font-black text-sky-600 uppercase tracking-widest group-hover:text-white">Available Now</span>
+                <span className="text-blue-900 font-bold text-sm group-hover:text-white">Get it &rarr;</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Philosophy Section */}
+      <section className="py-32 px-4 bg-slate-50">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-20">
             <h2 className="text-sm font-black text-sky-500 tracking-[0.4em] uppercase mb-4">Our Values</h2>
@@ -127,8 +223,8 @@ const Home: React.FC = () => {
                 desc: "Faith isn't just for Sundays. We help you find your unique compass heading to serve the world and love your neighbor." 
               }
             ].map((item, i) => (
-              <div key={i} className="group p-10 rounded-[2.5rem] bg-slate-50 hover:bg-blue-900 transition-all duration-500 hover:scale-105 hover:shadow-2xl">
-                <div className="w-16 h-16 bg-white rounded-2xl flex items-center justify-center text-sky-500 mb-8 shadow-sm group-hover:bg-sky-500 group-hover:text-white transition-colors">
+              <div key={i} className="group p-10 rounded-[2.5rem] bg-white hover:bg-blue-900 transition-all duration-500 hover:scale-105 hover:shadow-2xl border border-slate-100">
+                <div className="w-16 h-16 bg-slate-50 rounded-2xl flex items-center justify-center text-sky-500 mb-8 shadow-sm group-hover:bg-sky-500 group-hover:text-white transition-colors">
                   {item.icon}
                 </div>
                 <h4 className="text-2xl font-bold text-blue-950 mb-4 group-hover:text-white transition-colors">{item.title}</h4>
@@ -161,5 +257,4 @@ const Home: React.FC = () => {
   );
 };
 
-// Export the component as default to fix the "no default export" error in App.tsx
 export default Home;
